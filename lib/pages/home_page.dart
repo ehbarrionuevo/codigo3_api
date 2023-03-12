@@ -19,12 +19,12 @@ class HomePage extends StatelessWidget {
               ItemHomeWidget(
                 title: "Registrar Ciudadano",
                 subtitle: "Módulo del ciudadano",
-                toPage: const RegisterPage(),
+                toPage: RegisterPage(),
               ),
               ItemHomeWidget(
                 title: "Iniciar Sesión Ciudadano",
                 subtitle: "Módulo del ciudadano",
-                toPage: const RegisterPage(),
+                toPage: RegisterPage(),
               ),
               ItemHomeWidget(
                 title: "Listar Ciudadanos",
@@ -35,23 +35,23 @@ class HomePage extends StatelessWidget {
               ItemHomeWidget(
                 title: "Registrar Incidentes",
                 subtitle: "Módulo de incidentes",
-                toPage: const RegisterPage(),
+                toPage: RegisterPage(),
               ),
               ItemHomeWidget(
                 title: "Listado de Incidentes",
                 subtitle: "Módulo de incidentes",
-                toPage: const RegisterPage(),
+                toPage: RegisterPage(),
               ),
               const Divider(),
               ItemHomeWidget(
                 title: "Registrar Noticias",
                 subtitle: "Módulo de noticias",
-                toPage: const RegisterPage(),
+                toPage: RegisterPage(),
               ),
               ItemHomeWidget(
                 title: "Listado de Noticias",
                 subtitle: "Módulo de noticias",
-                toPage: const RegisterPage(),
+                toPage: RegisterPage(),
               ),
             ],
           ),

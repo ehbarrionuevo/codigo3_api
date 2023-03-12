@@ -19,8 +19,25 @@ class CitizenPage extends StatelessWidget {
             return ListView.builder(
               itemCount: citizens.length,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text(citizens[index].nombreCompleto),
+                return Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: ListTile(
+                    title: Text(citizens[index].nombreCompleto),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "DNI: ${citizens[index].dni}",
+                        ),
+                        Text(
+                          "Teléfono: ${citizens[index].telefono}",
+                        ),
+                        Text(
+                          "Dirección: ${citizens[index].direccion}",
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             );

@@ -16,4 +16,28 @@ class ApiService {
     }
     return [];
   }
+
+  registerCitizen(CitizenModel model) async {
+    Uri url = Uri.parse("http://167.99.240.65/API/registro/");
+    http.Response response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: json.encode(
+        {
+          "nombreCompleto": model.nombreCompleto,
+          "dni": model.dni,
+          "telefono": model.telefono,
+          "direccion": model.direccion,
+          "password": "mandarina"
+        },
+      ),
+    );
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 201) {
+      print("Registro exitoso");
+    }
+  }
 }
