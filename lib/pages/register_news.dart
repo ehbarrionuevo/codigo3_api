@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:codigo3_api/models/news_model.dart';
 import 'package:codigo3_api/services/api_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RegisterNews extends StatefulWidget {
@@ -37,16 +38,20 @@ class _RegisterNewsState extends State<RegisterNews> {
     }
   }
 
-  registerNews() {
+  registerNews() async {
     ApiService apiService = ApiService();
-    NewsModel news = NewsModel(
-      id: 0,
-      link: linkController.text,
-      titulo: titleController.text,
-      fecha: DateTime.now(),
-      imagen: imagex!.path,
-    );
-    apiService.registerNews(news);
+    if (imagex != null) {
+      File newImage =
+          await FlutterNativeImage.compressImage(imagex!.path, quality: 90);
+      NewsModel news = NewsModel(
+        id: 0,
+        link: linkController.text,
+        titulo: titleController.text,
+        fecha: DateTime.now(),
+        imagen: newImage.path,
+      );
+      apiService.registerNews(news);
+    }
   }
 
   @override

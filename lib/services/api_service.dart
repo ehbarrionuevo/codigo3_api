@@ -10,7 +10,8 @@ class ApiService {
     Uri url = Uri.parse("http://167.99.240.65/API/ciudadanos/");
     http.Response response = await http.get(url);
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
+      String dataConvert = Utf8Decoder().convert(response.bodyBytes);
+      Map<String, dynamic> data = json.decode(dataConvert);
       List dataList = data["data"];
       List<CitizenModel> citizens =
           dataList.map((e) => CitizenModel.fromJson(e)).toList();
@@ -43,7 +44,7 @@ class ApiService {
     }
   }
 
-  registerNews(NewsModel model) async {
+  Future<NewsModel?> registerNews(NewsModel model) async {
     Uri url = Uri.parse("http://167.99.240.65/API/noticias/");
     http.MultipartRequest request = http.MultipartRequest(
       "POST",
@@ -66,6 +67,12 @@ class ApiService {
 
     http.Response response = await http.Response.fromStream(streamedResponse);
 
-    print(response.statusCode);
+    if (response.statusCode == 201) {
+      String dataConvert = const Utf8Decoder().convert(response.bodyBytes);
+      Map<String, dynamic> data = json.decode(dataConvert);
+      NewsModel model = NewsModel.fromJson(data);
+      return model;
+    }
+    return null;
   }
 }
