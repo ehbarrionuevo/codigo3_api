@@ -50,7 +50,30 @@ class _RegisterNewsState extends State<RegisterNews> {
         fecha: DateTime.now(),
         imagen: newImage.path,
       );
-      apiService.registerNews(news);
+      apiService.registerNews(news).then((value) {
+        if (value != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "Noticia registrada",
+              ),
+            ),
+          );
+          titleController.clear();
+          linkController.clear();
+          imagex = null;
+          setState(() {});
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.redAccent,
+              content: Text(
+                "Hubo un inconveniente",
+              ),
+            ),
+          );
+        }
+      });
     }
   }
 
