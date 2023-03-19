@@ -1,4 +1,5 @@
 import 'package:codigo3_api/pages/citizen_page.dart';
+import 'package:codigo3_api/pages/news_page.dart';
 import 'package:codigo3_api/pages/register_news.dart';
 import 'package:codigo3_api/pages/register_page.dart';
 import 'package:codigo3_api/widgets/item_home_widget.dart';
@@ -52,7 +53,7 @@ class HomePage extends StatelessWidget {
               ItemHomeWidget(
                 title: "Listado de Noticias",
                 subtitle: "Módulo de noticias",
-                toPage: RegisterPage(),
+                toPage: NewsPage(),
               ),
             ],
           ),

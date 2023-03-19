@@ -75,4 +75,16 @@ class ApiService {
     }
     return null;
   }
+
+  Future<List<NewsModel>> getNews() async {
+    Uri url = Uri.parse("http://167.99.240.65/API/noticias/");
+    http.Response response = await http.get(url);
+    if (response.statusCode == 200) {
+      String dataConvert = const Utf8Decoder().convert(response.bodyBytes);
+      List data = json.decode(dataConvert);
+      List<NewsModel> news = data.map((e) => NewsModel.fromJson(e)).toList();
+      return news;
+    }
+    return [];
+  }
 }
